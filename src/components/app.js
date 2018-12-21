@@ -55,99 +55,84 @@ export class App extends React.Component {
 
 
     //Method to start 5 minute interval
-    startFiveMinuteTimer(){
+    startFiveMinuteTimer() {
 
-        if(this.props.loggedIn){
+        if (this.props.loggedIn) {
 
-            if(this.props.warning !== 'no warning'){
+            if (this.props.warning !== 'no warning') {
 
                 this.setState({
-    
+
                     warning: 'no warning'
-    
+
                 })
-    
-              }
-    
-              console.log('new 5 minute interval started!');
-    
-              this.fiveMinuteTimer = setInterval(
-                () =>  {
+
+            }
+
+            console.log('new 5 minute interval started!');
+
+            this.fiveMinuteTimer = setInterval(
+                () => {
                     //alert("You are about to be logged out due to inactivity....");
                     console.log('You now have 1 minute');
                     this.setState({
-    
+
                         warning: 'warning'
-    
+
                     })
                     this.startOneMinuteTimer();
                 },
                 1 * 60 * 1000//set to 1 minute -- should be set to 5 minutes
             );
-     
 
         }
-
-          
-
 
     }
 
     //Method to stop 5 minute interval
-    stopFiveMinuteTimer(){
+    stopFiveMinuteTimer() {
 
 
-        if(this.props.loggedIn){
+        if (this.props.loggedIn) {
 
-            console.log('>>> current timer: ',this.fiveMinuteTimer);
+            console.log('>>> current timer: ', this.fiveMinuteTimer);
 
             console.log('5 minute interval stopped!');
             clearInterval(this.fiveMinuteTimer);
-     
+
             this.startFiveMinuteTimer();
 
-
         }
-
-         
-       
 
     }
-   
 
-    startOneMinuteTimer(){
 
-        if(this.props.loggedIn){
+    startOneMinuteTimer() {
+
+        if (this.props.loggedIn) {
 
             console.log('new 1 minute interval started!');
- 
-        () => this.props.dispatch(clearAuth())
 
-        this.oneMinuteTimer = setInterval(
-          () =>  {
-              this.props.dispatch(clearAuth());//log user out
-              //alert("You have been logged out due to inactivity. You must log back in.");
-              console.log('Time is up logged out!');
-              this.setState({
+            () => this.props.dispatch(clearAuth())
 
-                warning: 'logged out'
+            this.oneMinuteTimer = setInterval(
+                () => {
+                    this.props.dispatch(clearAuth());//log user out
+                    //alert("You have been logged out due to inactivity. You must log back in.");
+                    console.log('Time is up logged out!');
+                    this.setState({
 
-            })
-            
-          },
-          1 * 60 * 1000
-      );
+                        warning: 'logged out'
 
+                    })
 
+                },
+                1 * 60 * 1000
+            );
 
         }
 
-
-        
-  }
-
-    
-
+    }
 
     render() {
         return (
