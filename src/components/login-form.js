@@ -9,6 +9,9 @@ export class LoginForm extends React.Component {
         return this.props.dispatch(login(values.username, values.password));
     }
 
+
+    
+
     render() {
         let error;
         if (this.props.error) {
@@ -20,10 +23,17 @@ export class LoginForm extends React.Component {
         }
         return (
             <form
+            
                 className="login-form"
                 onSubmit={this.props.handleSubmit(values =>
                     this.onSubmit(values)
                 )}>
+
+                {/* { console.log('>>>>',this.props.time)} */}
+                
+                {/* ==> check>>> {this.props.time} */}
+
+
                 {error}
                 <label htmlFor="username">Username</label>
                 <Field

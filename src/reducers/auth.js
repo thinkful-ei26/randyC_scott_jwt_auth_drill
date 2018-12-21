@@ -5,6 +5,7 @@ import {
     AUTH_SUCCESS,
     AUTH_ERROR
 } from '../actions/auth';
+ 
 
 const initialState = {
     authToken: null, // authToken !== null does not mean it has been validated
@@ -39,5 +40,8 @@ export default function reducer(state = initialState, action) {
             error: action.error
         });
     }
+
+   
+
     return state;
 }

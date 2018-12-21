@@ -12,6 +12,7 @@ export function LandingPage(props) {
 
     return (
         <div className="home">
+            { console.log('landing page >>>>',props.time)}
             <h2>Welcome to Foo App</h2>
             <LoginForm />
             <Link to="/register">Register</Link>
